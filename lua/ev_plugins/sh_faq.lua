@@ -34,7 +34,9 @@ function PLUGIN:Call( ply, args )
 			evolve:Notify( evolve.colors.white, " " )
 			evolve:Notify( Color( 255, 201, 0, 255 ), "[TKZ] Build to Kill FAQ" )
 			for k, v in pairs( PLUGIN.Qs ) do
-				PLUGIN.Qs[k]()
+				if(k != "noclip") then
+					PLUGIN.Qs[k]()
+				end
 			end
 		end
 	else
