@@ -21,6 +21,9 @@ PLUGIN.Qs["noclip"] = PLUGIN.Qs["fly"]
 PLUGIN.Qs["dupe"] = function()
 	evolve:Notify( Color( 255, 201, 0, 255 ), "At TKZ", evolve.colors.white, ", the ", evolve.colors.blue, "duplicator", evolve.colors.white, " tool is not available, so as to prevent un-original creations. Please use ", evolve.colors.blue, "Advanced Duplicator 2", evolve.colors.white, " instead." )
 end
+PLUGIN.Qs["rules"] = function()
+	evolve:Notify( Color( 255, 201, 0, 255 ), "At TKZ", evolve.colors.white, ", the ", evolve.colors.blue, "rules", evolve.colors.white, " can be found at ", evolve.colors.blue, "www.thekillzone-us.com/rules", evolve.colors.white, "." )
+end
 
 function PLUGIN:Call( ply, args )
 	if ( ply:EV_HasPrivilege( "FAQ" ) ) then
