@@ -24,6 +24,9 @@ end
 PLUGIN.Qs["rules"] = function()
 	evolve:Notify( Color( 255, 201, 0, 255 ), "At TKZ", evolve.colors.white, ", the ", evolve.colors.blue, "rules", evolve.colors.white, " can be found at ", evolve.colors.blue, "www.thekillzone-us.com/rules", evolve.colors.white, "." )
 end
+PLUGIN.Qs["mute"] = function()
+	evolve:Notify( Color( 255, 201, 0, 255 ), "At TKZ", evolve.colors.white, ", you can ", evolve.colors.blue, "mute", evolve.colors.white, " other players clientside by typing ", evolve.colors.blue, "gamemenucommand openplayerlistdialog", evolve.colors.white, " in console." )
+end
 
 function PLUGIN:Call( ply, args )
 	if ( ply:EV_HasPrivilege( "FAQ" ) ) then
