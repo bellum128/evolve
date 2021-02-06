@@ -35,9 +35,9 @@ function PLUGIN:Call( ply, args )
 	local time = evolve:GetProperty( uid, "PlayTime" )
 	if ( pl and pl:IsValid() ) then
 		time = time + os.clock() - pl.EV_LastPlaytimeSave
-		evolve:Notify( ply, evolve.colors.blue, evolve:GetProperty( uid, "Nick" ), evolve.colors.white, " has spent ", evolve.colors.red, evolve:FormatTime( time ), evolve.colors.white, " on this server, with ", evolve.colors.red, evolve:FormatTime( pl:TimeConnected() ), evolve.colors.white, " this session." )
+		evolve:Notify( ply, evolve.colors.blue, evolve:GetProperty( uid, "Nick" ), evolve.colors.white, " has spent ", evolve.colors.red, (time / 86400) .. " days", evolve.colors.white, " on this server, with ", evolve.colors.red, evolve:FormatTime( pl:TimeConnected() ), evolve.colors.white, " this session." )
 	else
-		evolve:Notify( ply, evolve.colors.blue, evolve:GetProperty( uid, "Nick" ), evolve.colors.white, " has spent ", evolve.colors.red, evolve:FormatTime( time ), evolve.colors.white, " on this server." )
+		evolve:Notify( ply, evolve.colors.blue, evolve:GetProperty( uid, "Nick" ), evolve.colors.white, " has spent ", evolve.colors.red, (time / 86400) .. " days", evolve.colors.white, " on this server." )
 	end
 end
 
