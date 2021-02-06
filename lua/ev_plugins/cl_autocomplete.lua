@@ -15,7 +15,7 @@ function PLUGIN:HUDPaint()
 	if ( self.Chat ) then
 		local x, y = chat.GetChatBoxPos()
 		x = x + ScrW() * 0.03875
-		y = y + ScrH() / 4 + 5
+		y = y + ScrH() / 4 + 5 - 40
 		
 		surface.SetFont( "ChatFont" )
 		
