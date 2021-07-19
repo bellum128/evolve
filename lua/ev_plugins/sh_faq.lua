@@ -6,8 +6,8 @@ local PLUGIN = {}
 PLUGIN.Title = "FAQ"
 PLUGIN.Description = "Frequently asked questions"
 PLUGIN.Author = "bellum128"
-PLUGIN.ChatCommand = "faq"
-PLUGIN.Usage = "[question]"
+PLUGIN.ChatCommand = {"faq", "build"}
+PLUGIN.Usage = {"[question]"}
 PLUGIN.Privileges = { "FAQ" }
 PLUGIN.Qs = {}
 
@@ -28,25 +28,29 @@ PLUGIN.Qs["mute"] = function()
 	evolve:Notify( Color( 255, 201, 0, 255 ), "At TKZ", evolve.colors.white, ", you can ", evolve.colors.blue, "mute", evolve.colors.white, " other players clientside by typing ", evolve.colors.blue, "gamemenucommand openplayerlistdialog", evolve.colors.white, " in console." )
 end
 
-function PLUGIN:Call( ply, args )
-	if ( ply:EV_HasPrivilege( "FAQ" ) ) then
-		local printFullList = ( #args == 0)
+function PLUGIN:Call( ply, args, arg, cmd )
+	if cmd == "faq" then
+		if ( ply:EV_HasPrivilege( "FAQ" ) ) then
+			local printFullList = ( #args == 0)
 
-		if(!printFullList && PLUGIN.Qs[args[1]] == nil) then
-			evolve:Notify( ply, evolve.colors.red, "Question not found." )
-		elseif(!printFullList) then
-			(PLUGIN.Qs[args[1]])()
-		else
-			evolve:Notify( evolve.colors.white, " " )
-			evolve:Notify( Color( 255, 201, 0, 255 ), "[TKZ] Build to Kill FAQ" )
-			for k, v in pairs( PLUGIN.Qs ) do
-				if(k != "noclip") then
-					PLUGIN.Qs[k]()
+			if(!printFullList && PLUGIN.Qs[args[1]] == nil) then
+				evolve:Notify( ply, evolve.colors.red, "Question not found." )
+			elseif(!printFullList) then
+				(PLUGIN.Qs[args[1]])()
+			else
+				evolve:Notify( evolve.colors.white, " " )
+				evolve:Notify( Color( 255, 201, 0, 255 ), "[TKZ] Build to Kill FAQ" )
+				for k, v in pairs( PLUGIN.Qs ) do
+					if(k != "noclip") then
+						PLUGIN.Qs[k]()
+					end
 				end
 			end
+		else
+			evolve:Notify( ply, evolve.colors.red, "Go FAQ yourself!" )
 		end
-	else
-		evolve:Notify( ply, evolve.colors.red, "Go FAQ yourself!" )
+	elseif cmd == "build" then
+		PLUGIN.Qs["build"]()
 	end
 end
 
